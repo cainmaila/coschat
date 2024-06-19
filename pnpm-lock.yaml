@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      ollama:
+        specifier: ^0.5.2
+        version: 0.5.2
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.0.0
@@ -893,6 +897,9 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
 
+  ollama@0.5.2:
+    resolution: {integrity: sha512-nH9WEU8lGxX2RhTH9TukjwrQBlyoprIh8wIGMfFlprgzzJgAr+MFFmHzCt7BZt4SMFMXVwM2xnKrfshfHkBLyQ==}
+
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
@@ -1216,6 +1223,9 @@ packages:
     peerDependenciesMeta:
       vite:
         optional: true
+
+  whatwg-fetch@3.6.20:
+    resolution: {integrity: sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==}
 
   which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -2028,6 +2038,10 @@ snapshots:
 
   normalize-path@3.0.0: {}
 
+  ollama@0.5.2:
+    dependencies:
+      whatwg-fetch: 3.6.20
+
   once@1.4.0:
     dependencies:
       wrappy: 1.0.2
@@ -2319,6 +2333,8 @@ snapshots:
   vitefu@0.2.5(vite@5.3.1):
     optionalDependencies:
       vite: 5.3.1
+
+  whatwg-fetch@3.6.20: {}
 
   which@2.0.2:
     dependencies:
