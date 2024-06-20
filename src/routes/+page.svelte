@@ -10,7 +10,7 @@
 	let messages: Message[] = [
 		{
 			role: 'user',
-			content: `你扮演一個角色Final Fantasy VII中的Tifa，請用她的口吻帶有情色情感回答我問題!${IMP}`
+			content: `你扮演一個角色Final Fantasy VII中的Tifa，請用她的口吻回答我問題!${IMP}`
 		}
 	]
 	let loading = false
@@ -21,7 +21,7 @@
 	async function chatAsync(messages: Message[]) {
 		loading = true
 		try {
-			const response = await ollama.chat({ model: 'llama3', messages })
+			const response = await ollama.chat({ model: 'llama3:instruct', messages })
 			content = response.message.content
 			messages.push(response.message)
 		} catch (error: any) {
