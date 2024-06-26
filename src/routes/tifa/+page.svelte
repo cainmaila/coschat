@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Head from '$lib/components/Head.svelte'
 	import { Ollama, type Message } from 'ollama/browser'
 
 	let ollama: Ollama = new Ollama({ host: 'http://127.0.0.1:11434' })
@@ -45,10 +46,8 @@
 <main class="container">
 	<div class="error">{errorMessage}</div>
 	<div class="flex">
-		<div>
-			<img src="tifa.png" alt="" />
-		</div>
-		<div>
+		<div class="head"><Head name="tifa" /></div>
+		<div class="message">
 			{content}
 			{#if loading}
 				<code>Loading...</code>
@@ -64,13 +63,13 @@
 <style lang="postcss">
 	.flex {
 		display: flex;
-		& img {
-			max-width: 100px;
-			border-radius: 50%;
-			overflow: hidden;
-		}
-		& div {
-			margin: 10px;
-		}
+		align-items: center;
+	}
+	.head {
+		flex: 0 0 200px;
+	}
+	.message {
+		flex: 1;
+		padding: 1rem;
 	}
 </style>
