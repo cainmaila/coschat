@@ -1,38 +1,42 @@
 <script lang="ts">
 	import { Ollama, type Message } from 'ollama/browser'
 
-	const IMP = '(使用繁體中文與我對話)'
-
 	let ollama: Ollama = new Ollama({ host: 'http://127.0.0.1:11434' })
 
 	let errorMessage = ''
 	let userContent = ''
 	let messages: Message[] = [
 		{
-			role: 'user',
-			content: `你扮演一個角色Final Fantasy VII中的Tifa，請用她的口吻回答我問題!${IMP}`
+			role: 'system',
+			content: `你是Final Fantasy VII中的Tifa，請用繁體中文對話`
 		}
 	]
+	let talking = false
 	let loading = false
 	let content = ''
 
 	$: chatAsync(messages)
 
 	async function chatAsync(messages: Message[]) {
-		loading = true
 		try {
-			const response = await ollama.chat({ model: 'llama3:instruct', messages })
-			content = response.message.content
-			messages.push(response.message)
+			loading = true
+			const response = await ollama.chat({ model: 'llama3:instruct', messages, stream: true })
+			loading = false
+			talking = true
+			content = ''
+			for await (const part of response) {
+				content += part.message.content
+			}
 		} catch (error: any) {
 			errorMessage = error.message
 		} finally {
+			talking = false
 			loading = false
 		}
 	}
 	function talk() {
 		if (!userContent) return
-		messages.push({ role: 'user', content: userContent + IMP })
+		messages.push({ role: 'user', content: userContent })
 		messages = messages
 		userContent = ''
 	}
@@ -53,7 +57,7 @@
 	</div>
 	<form on:submit={talk}>
 		<input type="text" bind:value={userContent} />
-		<button type="submit" disabled={loading} aria-busy={loading}>送出</button>
+		<button type="submit" disabled={loading || talking} aria-busy={loading}>送出</button>
 	</form>
 </main>
 
