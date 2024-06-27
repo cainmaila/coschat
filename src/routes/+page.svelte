@@ -10,18 +10,21 @@
 </script>
 
 <main class="container">
-	<div class="mambers">
-		<a href="/tifa">
-			<Head name="tifa" />
-		</a>
-		<a href="/aerith">
-			<Head name="aerith" />
-		</a>
-		<a href="/cidney">
-			<Head name="cidney" />
-		</a>
-	</div>
-	<div>
+	<section>
+		<h2>選擇你要對話的角色</h2>
+		<div class="mambers">
+			<a href="/tifa">
+				<Head name="tifa" />
+			</a>
+			<a href="/aerith">
+				<Head name="aerith" />
+			</a>
+			<a href="/cidney">
+				<Head name="cidney" />
+			</a>
+		</div>
+	</section>
+	<section>
 		<h2>Ollama服務設定</h2>
 		<code>你可以使用自己本地的服務器</code>
 		<form>
@@ -31,7 +34,7 @@
 			</div>
 			<button on:click={reset}>重置設定</button>
 		</form>
-	</div>
+	</section>
 </main>
 
 <style lang="postcss">

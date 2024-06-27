@@ -18,6 +18,12 @@
 		position: relative;
 		border-radius: 50%;
 		overflow: hidden; /* 隐藏超出的部分 */
+		transition: all 0.5s;
+		filter: brightness(0.8);
+		&:hover {
+			scale: 1.2;
+			filter: brightness(1.2);
+		}
 	}
 	.pcx {
 		border-radius: 50px;
