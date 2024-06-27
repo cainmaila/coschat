@@ -1,6 +1,12 @@
 <script lang="ts">
 	import Head from '$lib/components/Head.svelte'
 	import { ollamaHost$, model$ } from '$lib/stores'
+	import { page } from '$app/stores'
+
+	function reset() {
+		ollamaHost$.set($page.data.OLLAMA_HOST)
+		model$.set('llama3')
+	}
 </script>
 
 <main class="container">
@@ -23,6 +29,7 @@
 				<label for="name">Ollama Host<input type="text" bind:value={$ollamaHost$} /></label>
 				<label for="name">Ollama Host<input type="text" bind:value={$model$} /></label>
 			</div>
+			<button on:click={reset}>重置設定</button>
 		</form>
 	</div>
 </main>
