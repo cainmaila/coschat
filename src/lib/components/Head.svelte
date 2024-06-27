@@ -14,9 +14,10 @@
 <style lang="postcss">
 	.head {
 		width: 120px;
-		height: auto;
+		height: 120px;
+		position: relative;
 		border-radius: 50%;
-		overflow: hidden;
+		overflow: hidden; /* 隐藏超出的部分 */
 	}
 	.pcx {
 		border-radius: 50px;

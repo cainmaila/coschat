@@ -15,6 +15,11 @@
 <style lang="postcss">
 	img {
 		width: 100%;
+		height: 100%;
+		object-fit: cover; /* 使图像覆盖容器 */
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 	.lv1 {
 		animation: shake 5s infinite;
