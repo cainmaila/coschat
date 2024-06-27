@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Head from '$lib/components/Head.svelte'
 	import { Ollama, type Message } from 'ollama/browser'
+	import { page } from '$app/stores'
 
-	let ollama: Ollama = new Ollama({ host: 'http://127.0.0.1:11434' })
+	const { OLLAMA_HOST } = $page.data
+	const ollama: Ollama = new Ollama({ host: OLLAMA_HOST })
 
 	let errorMessage = ''
 	let userContent = ''
@@ -21,7 +23,7 @@
 	async function chatAsync(messages: Message[]) {
 		try {
 			loading = true
-			const response = await ollama.chat({ model: 'llama3:instruct', messages, stream: true })
+			const response = await ollama.chat({ model: 'llama3', messages, stream: true })
 			loading = false
 			talking = true
 			content = ''
