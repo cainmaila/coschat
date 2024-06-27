@@ -23,7 +23,7 @@
 	async function chatAsync(messages: Message[]) {
 		try {
 			loading = true
-			const response = await ollama.chat({ model: 'llama3:instruct', messages, stream: true })
+			const response = await ollama.chat({ model: 'llama3', messages, stream: true })
 			loading = false
 			talking = true
 			content = ''
