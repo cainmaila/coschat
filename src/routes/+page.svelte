@@ -5,7 +5,7 @@
 
 	function reset() {
 		ollamaHost$.set($page.data.OLLAMA_HOST)
-		model$.set('llama3')
+		model$.set('llama3:instruct')
 	}
 </script>
 
